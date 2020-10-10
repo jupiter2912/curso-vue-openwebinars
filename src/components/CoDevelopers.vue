@@ -8,7 +8,15 @@
 
 <script>
   export default {
-    name: 'CoDevelopers',
+    name: 'CoDevelopers', 
+
+    //data son los valores iniciales que toma el componente y son exclusivos de dicho
+    //componente
+      data(){
+        return {
+          users : []  // nuestro componente va a empezar con una lista vacia que se ira llenando
+        }
+      }
   }
 </script>
 

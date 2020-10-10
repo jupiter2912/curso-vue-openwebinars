@@ -27,7 +27,52 @@
 
 <script>
   export default {
-    name: 'CoDeveloper'
+    name: 'CoDeveloper',
+    //coDeveloper recibe propiedades del padre de este componente
+    // en este caso desde coDevelopers.vue
+    props: {
+
+      //propiedad avatar
+      avatar:{
+        type: String, //url para la imagen
+        required: true, //siempre queremos renderizar la imagen del usuario
+
+        //aqui validamos que es una ruta
+        validator (value){
+          return value.starsWith('http');
+        },
+        //propiedad name
+        name: {
+          type: String,
+          required: true,
+        },
+        //propiedad login
+        login:{
+          type: String,
+          required: true
+        },
+        //propiedad email
+        email: {
+          type: String,
+          required: true
+        },
+        //propiedad company
+        company: {
+          type: String,
+          required: false
+        },
+        //propiedad repos
+        respos:{
+          type: Number
+        },
+
+        gists: {
+          type: Number
+        }
+
+
+      }
+    }
   }
 </script>
 
