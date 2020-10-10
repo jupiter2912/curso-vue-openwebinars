@@ -69,7 +69,44 @@
         gists: {
           type: Number
         }
+      },
 
+      //para nuestras propiedades computadas que son las que hacen alguna operacion y la devuelven
+      computed: {
+        metadata(){
+          let meta = '';
+
+          if(this.email){
+            meta = `${meta} ${this.email}`
+          }
+
+           if(this.location){
+            meta = `${meta} ${this.location}`
+          }
+
+           if(this.company){
+            meta = `${meta} ${this.company}`
+          }
+
+          return meta;
+        },
+
+        //Observadores de variables y propiedades
+        watch: {
+          //variable que queremos observar
+          metadata(newValue){ 
+            console.log('Metadata: ', newValue)
+          }
+        }
+
+
+        //si queremos que se devuelvan los datos o setearlos tendriams que declarar
+        // get()
+        // set()
+        // otherMeta : {
+        //   get(){},
+        //   set(){}
+        // }
 
       }
     }
