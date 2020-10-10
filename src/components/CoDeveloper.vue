@@ -98,8 +98,6 @@
             console.log('Metadata: ', newValue)
           }
         }
-
-
         //si queremos que se devuelvan los datos o setearlos tendriams que declarar
         // get()
         // set()

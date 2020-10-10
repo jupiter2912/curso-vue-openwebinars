@@ -16,7 +16,12 @@
         return {
           users : []  // nuestro componente va a empezar con una lista vacia que se ira llenando
         }
-      }
+      },
+
+    mounted (){
+      console.log ('CoDeverloper mounted');
+    }
+
   }
 </script>
 
