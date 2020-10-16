@@ -2,7 +2,12 @@
   <div class='codit'>
     <div class='container'>
       <nav class='menu'>
-        <co-search></co-search>
+
+        <!-- Evento recibido en el padre con el metodo onSearch() 
+        que definimos en el script -->
+        <co-search
+          v-on:search='onSearch'>
+        </co-search>
         <co-bookmarks></co-bookmarks>
       </nav>
       <main class='content'>
@@ -15,11 +20,33 @@
   </div>
 </template>
 
+
+
 <script>
-  export default {
-    name: 'CoApp'
+import CoLogo from '@/components/CoLogo'
+import CoSearch from '@/components/CoSearch'
+import CoDevelopers from '@/components/CoDevelopers'
+import CoBookmarks from '@/components/CoBookmarks'
+//  necesitamos importar los componentes necesarios
+
+export default {
+  name: 'CoApp',
+  methods: {
+    onSearch (searchCriteria) {
+      console.log('Search ', searchCriteria)
+    }
+  },
+
+  // Definimos en components los components necesarios e importados que queremos mostrar
+  components: {
+    CoLogo,
+    CoSearch,
+    CoDevelopers,
+    CoBookmarks
   }
+}
 </script>
 
 <style lang='css'>
 </style>
+

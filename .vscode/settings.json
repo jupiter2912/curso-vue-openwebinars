@@ -1,0 +1,7 @@
+{
+    "editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+	"javascript.preferences.quoteStyle": "single"
+}
