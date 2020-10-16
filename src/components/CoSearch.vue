@@ -11,6 +11,10 @@
 </template>
 
 <script>
+/* eslint-disable */
+// importamos nuestro bus de datos
+  import bus from '@/busdata.js'
+
   export default {
     name: 'CoSearch',
     // propiedades
@@ -24,7 +28,11 @@
     watch: {
       criteria () {
         // emitimos un evento de busqueda hacia el padre App.vue
-        this.$emit('search', this.criteria)
+		// this.$emit('search', this.criteria)
+		
+		// para emitirlo con bus de eventos (el mismo evento de antes pero con el bus de eventos) 
+		// lo mandamos a codevelopers.vue
+        bus.$emit('search', this.criteria)
       }
     }
   }

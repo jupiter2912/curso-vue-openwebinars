@@ -6,7 +6,11 @@
   </ul>
 </template>
 
+
 <script>
+/* eslint-disable */
+  import bus from '@/busdata.js'
+
   export default {
     name: 'CoDevelopers',
     // data son los valores iniciales que toma el componente y son exclusivos de dicho
@@ -18,8 +22,15 @@
     },
 
     mounted () {
-      console.log('CoDeverloper mounted')
-    }
+	  console.log('CoDeverloper mounted')
+    },
+	
+	// en otro ciclo de vida como es created() recogemos el evento con $on
+    created () {
+	  bus.$on('search', criteria => {
+		console.log('Codevelopers ', criteria)
+	  })
+	}
 
   }
 </script>
