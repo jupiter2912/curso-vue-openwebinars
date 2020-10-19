@@ -1,6 +1,18 @@
-<template lang='html' src ="./App.html">
- 
+ /** Para ejecutarlo con marcaje HTML  */
+
+ /**
+ <template lang='html' src ="./App.html">
+ <!--  -->
 </template>
+ 
+*/
+
+/** Para ejecuarlos con marcaje PUG */
+ <template lang='pug' src ="./App.pug">
+
+</template>
+
+
 
 
 

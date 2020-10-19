@@ -1,0 +1,42 @@
+//Marcado pug
+
+.codit
+	.container
+		nav.menu
+			co-search(v-on:search = 'onSearch')
+			co-bookmarks
+		main.content
+			header.content__header
+				co-logo
+			co-developers
+
+
+
+
+
+
+
+
+
+// Marcado HTML
+//- <div class='codit'> 
+//-     <div class='container'>
+//-       <nav class='menu'>
+
+//-         <!-- Evento recibido en el padre con el metodo onSearch() 
+//-         que definimos en el script -->
+//-         <co-search
+//-           v-on:search='onSearch'>
+//-         </co-search>
+//-         <co-bookmarks></co-bookmarks>
+//-       </nav>
+//-       <main class='content'>
+//-         <header class='content__header'>
+//-           <co-logo></co-logo>
+//-         </header>
+//-         <co-developers></co-developers>
+//-       </main>
+//-     </div>
+//-   </div>
+
+
