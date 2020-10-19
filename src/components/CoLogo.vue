@@ -1,6 +1,7 @@
 <template lang='html'>
 <!-- Aqui realizo la interpolacion para acceder a esas variables con la sintaxis {{ }} -->
-  <h1 class='logo'>{{ appName }}</h1>
+<!-- El | upper es una tuberia del filtro. Se podrian poner todos los filtros que quisieramos -->
+  <h1 class='logo'>{{ appName | upper }}</h1>
 </template>
 
 <script>
@@ -11,6 +12,14 @@
 	data () {
 		return {
 			appName : ' Soy Sonnie '
+		}
+	},
+	filters: {
+		upper (value){
+			if(!value){
+				return ''
+			}
+			return value.toUpperCase()
 		}
 	}
   }
