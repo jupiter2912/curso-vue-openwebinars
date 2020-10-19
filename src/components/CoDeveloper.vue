@@ -13,11 +13,11 @@
       </div>
     </div>
     <div class='developer__stats'>
-      <div class='developer__stat'>
+      <div class='developer__stat' v-if='repos'>
         <div class='developer__icon'></div>
         <div class='developer__total'>{{ repos }}</div>
       </div>
-      <div class='developer__stat'>
+      <div class='developer__stat' v-show='gists'>
         <div class='developer__icon'></div>
         <div class='developer__total'>{{ gists }}</div>
       </div>
@@ -70,12 +70,14 @@
 	  
 	  // propiedad repos
       repos: {
-        type: Number
+		type: Number,
+		required : false
 	  },
 	  
 	  // propiedad gists
       gists: {
-        type: Number
+		type: Number,
+		required : false
       }
 	},
 	
