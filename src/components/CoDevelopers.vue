@@ -34,7 +34,7 @@
     // componente
     data () {
       return {
-		users: mocks, // la llenamos con los datos fijos de mocks
+		users: [],
 
 		userConNombre : {
 			fontWeight: 900,
@@ -48,8 +48,63 @@
 	},
 
     mounted () {
-	  console.log('CoDeverloper mounted')
-    },
+	  //Cuando se monte el componente llamaremos al metodo getTopUsers()
+	  this.getTopUsers()
+	},
+	
+	// para hacer el fecth vamos a crear un metodo
+	methods: {
+		getTopUsers () {
+			return fetch(
+				//generamos una peticion ajax
+				// llamamos a la API de github que tenemos definida en prodEnv.js
+				// y le mandamos una peticion que muestre solo los de lenguaje JS en orden descendente y 15 por pagina
+
+				//pedimos 15 usuarios
+				`${process.env.API}search/users?q=language:javascript&order=desc&per_page=15`,
+				{
+					headers: {
+						'Authorization': `token ${process.env.TOKEN}` // necesitamos la variable TOKEN definida en produccion
+					}
+				}
+			)
+			// el fetch lanza una promesa que devuelve una response y nosotros le decimos que la trate como json
+			.then (response => response.json())
+
+			// tambien le ponemos una promesa para que coger los items de esa respuesta que nos manda
+			.then (response => response.items)
+
+			// por cada usuario como queremos mas datos de ellos (en este caso los repos y los gists) lanzamos
+			// otro fetch pidiendo datos pero ya de los usuarios
+			
+			.then (users => users.map(user =>
+				fetch(
+					`${process.env.API}users/${user.login}`,
+					{
+						headers: {
+							'Authorization': `token ${process.env.TOKEN}`
+						}
+					}
+				)
+
+				// una vez tengamos los datos lanzados  por este ultimo fetch
+				// le decimos que queremos trabajar con json
+				.then (response => response.json())
+				
+			))
+
+			// users.map nos devuelve un array de promesas
+			// le decimos que lo resuelva entero
+			.then (response => Promise.all(response))
+			
+			// una vez este resuelto nos generara una serie de datos que asignaremos a nuestra propiedad data()
+			.then (users => {
+				this.users = users
+			})
+
+
+		}
+	},
 	
 	// en otro ciclo de vida como es created() recogemos el evento con $on
     created () {
