@@ -89,7 +89,12 @@
        CoGoToHome,
     //   CoSocial,
     //   CoEvents
-    },
+	},
+	
+	//crearemos un watcher de $route para que cuando esta variable cambie se reaccione
+	// watch: {
+	// 	'$route' : 'getUserData' // utilice esta funcion
+	// },
     mounted () {
       this.getUserData()
     },
