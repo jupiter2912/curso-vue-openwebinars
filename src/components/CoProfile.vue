@@ -107,7 +107,16 @@
 				this.info = user
 			})
       }
-    }
+	},
+	beforeRouteEnter (to, from, next){
+
+	},
+	beforeRouterUpdate(to, from, next){
+
+	},
+	beforeRouterLeave(to, from, next){
+
+	}
   }
 </script>
 

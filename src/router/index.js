@@ -9,7 +9,7 @@ import CoProfile from '@/components/CoProfile'
 
 Vue.use(Router) // el plugin de router se inyecta en Vue. Cada componente tendra acceso al router
 
-export default new Router({
+let router = new Router({
 	mode: 'history',
 
 	//Definiremos las rutas
@@ -18,7 +18,11 @@ export default new Router({
 			// ruta para el home
 			path: '/', // la ruta
 			name: 'home', // el nombre de la ruta
-			component: CoDevelopers //los componentes que queremos renderizar
+			component: CoDevelopers, //los componentes que queremos renderizar
+			beforeEnter(to, from, next) {
+				console.log('Hook beforeEnter en home')
+				next()
+			}
 		},
 		{
 			// ruta para que cargue el perfil de cada usuario
@@ -31,9 +35,24 @@ export default new Router({
 			component: CoProfile,
 			props: true
 		},
-
-
 	]
-			
+})
+
+/**
+ * to --> adonde va
+ * from --> de donde viene
+ * next --> funcion obligatoria sino no renderiza el componente
+ */
+router.beforeEach((to, from, next) => {
+	console.log('Hook beforeEach')
+	next()
+})
+
+
+router.afterEach((to, from) => {
+	console.log('Hook afterEach')
 	
 })
+
+
+export default router
