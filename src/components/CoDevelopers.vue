@@ -3,17 +3,23 @@
     <!-- <li class="developers__item" v-bind:class="{ 'userConNombre': user.name === false }"> -->
 		<!-- Podemos ponerlo como si fuese un objeto -->
     <li v-for='user in users' class="developers__item" v-bind:style="userConNombre">
+		<!-- Cada vez que hagamos click en un desarrollador saltara la navegacion de
+		router-link -->
+		<router-link
+			v-bind:to = "{ name: 'profile'}"
+		>
 		<!-- Utilizo un binding del objeto creado en user -->
-      <co-developer
-        v-bind:avatar='user.avatar_url'
-        v-bind:name='user.name'
-        v-bind:login='user.login'
-        v-bind:email='user.email'
-        v-bind:location='user.location'
-        v-bind:company='user.company'
-        v-bind:repos='user.public_repos'
-        v-bind:gists='user.public_gists'
-      ></co-developer>
+			<co-developer
+				v-bind:avatar='user.avatar_url'
+				v-bind:name='user.name'
+				v-bind:login='user.login'
+				v-bind:email='user.email'
+				v-bind:location='user.location'
+				v-bind:company='user.company'
+				v-bind:repos='user.public_repos'
+				v-bind:gists='user.public_gists'
+			></co-developer>
+		</router-link>
     </li>
   </ul>
 </template>
