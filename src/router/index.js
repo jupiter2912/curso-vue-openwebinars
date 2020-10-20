@@ -6,6 +6,7 @@ import Router from 'vue-router'
 
 import CoDevelopers from '@/components/CoDevelopers'
 import CoProfile from '@/components/CoProfile'
+import CoNotFound from '@/components/CoNotFound'
 
 Vue.use(Router) // el plugin de router se inyecta en Vue. Cada componente tendra acceso al router
 
@@ -35,6 +36,19 @@ let router = new Router({
 			component: CoProfile,
 			props: true
 		},
+		{
+			//ruta para redirigir al usuario en cado de que la ruta no sea encontrada
+			path: '/not-found',
+			name: '404',
+			component: CoNotFound
+		},
+		//esta ruta seria ya para que se acceda a ella sino se ha podido ir a ninguna de las demas
+		{
+			path: '*',
+			redirect: {
+				name: '404'
+			}
+		}
 	]
 })
 
