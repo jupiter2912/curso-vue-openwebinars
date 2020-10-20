@@ -52,26 +52,27 @@
 /* eslint-disable */
   import mock from '@/mocks/user' // Eventual luego lo quitaremos
 
+  import axios from 'axios'
+
   import CoGoToHome from '@/components/CoGoToHome'
   //import CoSocial from '@/components/CoSocial'
   //import CoEvents from '@/components/CoEvents'
   export default {
     name: 'CoProfile',
-    // props: {
-    //   user: {
-    //     type: String,
-    //     required: true
-    //   }
-    //},
+    props: {
+      user: {
+        type: String,
+        required: true
+      }
+    },
     data () {
       return {
-        // info: {
-        //   followers: 0,
-        //   following: 0,
-        //   public_repos: 0,
-        //   public_gists: 0
-		// },
-		info: mock
+        info: {
+          followers: 0,
+          following: 0,
+          public_repos: 0,
+          public_gists: 0
+		}
       }
     },
     computed: {
@@ -93,8 +94,18 @@
       this.getUserData()
     },
     methods: {
+		// para recibir los datos de los desarrolladores como en el caso de CoDevelopers
+		// necesitamos una peticion mediante axios
       getUserData () {
-        console.log('getUserData')
+        return axios({
+			method: 'GET',
+			url: `${process.env.API}users/${this.user}`,
+			headers: { 'Authorization': `token ${process.env.TOKEN}` }
+		})
+			.then(response => response.data)
+			.then(user => {
+				this.info = user
+			})
       }
     }
   }

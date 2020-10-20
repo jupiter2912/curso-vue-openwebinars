@@ -22,9 +22,14 @@ export default new Router({
 		},
 		{
 			// ruta para que cargue el perfil de cada usuario
-			path: '/profile',
+
+			// para que no nos cargue los datos de mock y herede las propiedades y pueda mostrarnos los 
+			// datos que trajimos de la API de github no haremos con una magic param que implementamos en
+			// el path /:user
+			path: '/profile/:user',
 			name: 'profile',
-			component: CoProfile
+			component: CoProfile,
+			props: true
 		},
 
 

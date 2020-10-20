@@ -5,8 +5,9 @@
     <li v-for='user in users' class="developers__item" v-bind:style="userConNombre">
 		<!-- Cada vez que hagamos click en un desarrollador saltara la navegacion de
 		router-link -->
+		<!-- Al utilizar un magic params hay que decirselo al router-link -->
 		<router-link
-			v-bind:to = "{ name: 'profile'}"
+			v-bind:to = "{ name: 'profile', params: { user: user.login }}"
 		>
 		<!-- Utilizo un binding del objeto creado en user -->
 			<co-developer
