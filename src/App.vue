@@ -26,9 +26,15 @@ import CoBookmarks from '@/components/CoBookmarks'
 
 export default {
   name: 'CoApp',
+  data () {
+	  return {
+		  show: false
+	  }
+  },
   methods: {
     onSearch (searchCriteria) {
-      console.log('Search ', searchCriteria)
+	  console.log('Search ', searchCriteria)
+	  this.show = true
     }
   },
 
@@ -54,8 +60,8 @@ export default {
 
 <style lang='css'>
 /* css global a la aplicacion */
-	@import 'assets/css/reset';
-	@import 'assets/css/global';
+	@import 'assets/css/reset.css';
+	@import 'assets/css/global.css';
 </style>
 
 /** Podemos crear todos los styles que queramos siempre que identifiquemos el scope */

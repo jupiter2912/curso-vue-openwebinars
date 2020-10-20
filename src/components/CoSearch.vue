@@ -44,7 +44,8 @@
 	// }
 	methods: {
 		onSearch () {
-			bus.$emit('search', this.criteria)
+			this.$emit('search', this.criteria)
+			//bus.$emit('search', this.criteria)
 		}
 	  }
   }

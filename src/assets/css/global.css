@@ -54,3 +54,12 @@ input:focus {
   background-color: var(--color-white);
   color: var(--color-blue);
 }
+
+/* css para las transiciones con algunos de los estados de esa transicion */
+.fade-enter-active, .fade-leave-active {
+	transition: opacitity 30s
+}
+
+.fade-enter, .fade-leave-to{
+	opacity: 0;
+}
